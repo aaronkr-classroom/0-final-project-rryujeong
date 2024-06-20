@@ -1,55 +1,226 @@
-<!-- views/courses/index.ejs -->
+<!-- views/transportation.ejs -->
 
+<!-- MAIN 페이지 내용 -->
 <main class="">
-  <div class="container col-xl-10 col-xxl-8 px-4 py-5">
-    <div class="pt-5 pb-5">
-      <h1>Courses</h1>
-      <p>Here are all our current course offerings.</p>
+  <div
+    id="carouselExampleCaptions"
+    class="carousel slide"
+    data-bs-ride="carousel"
+  >
+    <div class="carousel-indicators">
+      <button
+        type="button"
+        data-bs-target="#carouselExampleCaptions"
+        data-bs-slide-to="0"
+        class="active"
+        aria-current="true"
+        aria-label="Slide 1"
+      ></button>
+      <button
+        type="button"
+        data-bs-target="#carouselExampleCaptions"
+        data-bs-slide-to="1"
+        aria-label="Slide 2"
+      ></button>
+      <button
+        type="button"
+        data-bs-target="#carouselExampleCaptions"
+        data-bs-slide-to="2"
+        aria-label="Slide 3"
+      ></button>
+    </div>
+    <div class="carousel-inner">
+      <!-- 1. Carousel Item ONE -->
+      <div class="carousel-item active">
+        <img
+        src="../img/qqq.jpg"
+          class="d-block w-100"
+          alt="..."
+        />
+        <div class="carousel-caption text-start">
+          <h1>2325402</h1>
+          <p></p>
+          <p>
+             <em></em></a
+            >
+          </p>
+        </div>
+      </div>
 
-      <table class="table">
-        <thead>
-          <tr>
-            <th>Title</th>
-            <th>Description</th>
-            <th>Edit</th>
-            <th>Delete</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% courses.forEach(course => { %>
-          <tr>
-            <td>
-              <a href="<%= `/courses/${course._id}` %>">
-                <%= course.title %>
-              </a>
-            </td>
-            <td><%= course.description %></td>
-            <td>
-              <a href="<%=`courses/${course._id}/edit`%>"> Edit </a>
-            </td>
-            <td>
-              <a
-                href="<%= `courses/${course._id}/delete?_method=DELETE` %>"
-                onclick="return confirm('Are you sure you want to delete this record?')"
-                a
-                >Delete</a
-              >
-            </td>
-          </tr>
-          <% }); %>
-        </tbody>
-      </table>
+      <!-- 2. Carousel Item TWO -->
+      <div class="carousel-item">
+        <img
+        src="../img/rrr.jpg"
+          class="d-block w-10"
+          alt=" width: 100%;
+          height: auto;"
+      
+            
+          
+        />
+        <div class="carousel-caption text-start">
+          <h1>Ryu jeong han</h1>
+          <p></p>
+          <p>
+             <em></em></a
+            >
+          </p>
+        </div>
+      </div>
 
-      <div class="mt-5 text-center">
-        <a href="/courses/new" class="btn btn-primary">Add New Course</a>
-        <a
-          href="/"
-          class="btn ut-red disabled"
-          role="button"
-          aria-disabled="true"
-          >Delete All Courses</a
-        >
+      <!-- 3. Carousel Item THREE -->
+      <div class="carousel-item">
+        <img
+        src="../img/ttt.jpg"
+          class="d-block w-100"
+          alt="..."
+        />
+        <div class="carousel-caption text-start">
+          <h1>GAME SERIES</h1>
+          <p>Outfit Of The Day.</p>
+          <p>
+            <em></em></a
+            >
+          </p>
+        </div>
       </div>
     </div>
+    <button
+      class="carousel-control-prev"
+      type="button"
+      data-bs-target="#carouselExampleCaptions"
+      data-bs-slide="prev"
+    >
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button
+      class="carousel-control-next"
+      type="button"
+      data-bs-target="#carouselExampleCaptions"
+      data-bs-slide="next"
+    >
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
   </div>
+
+  <div class="text-center pt-5">
+    <h1>POKEMON</h1>
+    <p class="lead">
+      nintendo game series
+    </p>
+  </div>
+  <table class="toptable">
+    <tr>
+      <td>
+        <img src="../img/uuu.jpg" style="width: 300px;" alt="..."/>
+      </td>
+      <td style="width: 300px;">
+        96년 처음으로 등장한 포켓몬스터 시리즈    <br>
+        레드와 그린 버전이 닌텐도 게임보이로 초기발매      <br>
+       1세대  <br>
+           
+      </td>
+      <td>
+        <img src="../img/cccc.jfif" style="width: 300px;" alt="..."/>
+      </td>
+      <td style="width: 300px;">
+        이때 부터 게임 보이 컬러로 발매 되며<br>
+        색감이 있는 배경으로 보다 다채로운 플레이 가능<br>
+        기존 포켓몬에 100말 추가되면 총251마리가 됨<br>
+         2세대
+
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <img src="../img/xxx.jfif" style="width: 300px;" alt="..."/>
+      </td>
+      <td style="width: 300px;">
+        게임 보이 어드밴스로 플랫폼 교체가 이루어 지면서<br>
+        루비와 사파이어 시리즈가 등장한다 이때는 신규 포켓몬이 286마리 증가 <br>
+        게임 스토리가 끝나고도 육성이 가능해지는 시스템<br>
+        시스템 및 성격 요소를 포함해 다양한 콘텐즈가 생겨남      <br>
+       3세대
+
+      </td>
+      <td>
+        <img src="../img/sss.jfif" style="width: 300px;" alt="..."/>
+      </td>
+      <td style="width: 300px;">
+        06년도에는 닌텐도 ds로 플랫폼이 바뀌고  <br>
+        유저들이 3d로 플레이 할수 있도록 개선됨<br>
+        이때는 멀티로 pvp배틀이 가능하면서 전세계 사람들이 교환및 대전이 가능<br>
+        4세대
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <img src="../img/mmm.jfif" style="width: 300px;" alt="..."/>
+      </td>
+      <td style="width: 300px;">
+        전투에서 애니메이션이 실간 나게 바뀜<br>
+        계절과 날씨 요소가 적용되어 포켓몬스터 배틀 시에 고려할 부분이 많아짐과<br>
+  
+        동시에 어른들이 플레이 하기 적합한 상태가 됨<br>
+          5세대
+
+      </td>
+      <td>
+        <img src="../img/ggg.jfif" style="width: 300px;" alt="..."/>
+      </td>
+      <td style="width: 300px;">
+        15년도에 닌텐도 3ds로 플랫폼을 이동하고 포켓몬으 쓰담거나 친밀도를 올리는 <br>
+        올리는 형태 및 페어리 타입의 추가와 함께 기존 탑입의 상성이 많이변함<br>
+        이때부터 메가진화 시스템 발전<br>
+        6세대
+      </td>
+    </tr>
+    <td>
+      <img src="../img/vvvv.jfif" style="width: 300px;" alt="..."/>
+    </td>
+    <td style="width: 300px;">
+      3ds의 마지막 세대인 썬과 문이 16년도에 출시됨 포켓몬을 탈수 있는기능 생김<br>
+      버전 머신이 폐지됨<br>
+      그리고 1세대 포켓몬들이 알로라 지방의 새로운 모습으로 유저들에게 소개됨<br>
+            <br>
+      7세대
+
+    </td>
+    <td>
+      <img src="../img/hhh.jfif" style="width: 300px;" alt="..."/>
+    </td>
+    <td style="width: 300px;">
+      19년에 닌테도 스위치로 또한번 나왔으묘 첫번째 발매된 레츠고 시리즈 흡사<br>
+         포켓몬 전용 기술을 포함해서 액션이 화려해짐    <br>
+      <br>
+        8세대<br>
+      
+
+    </td>
+    <tr>
+      <td>
+        <img src="../img/zzz.jfif" style="width: 300px;" alt="..."/>
+      </td>
+      <td style="width: 300px;">
+      실전 육성에 있어서도 편의성이 대폭 개선됨 키우미집 삭제 <br>
+       도감 퀄리티 상승, 기존 본가 작품보다 높은 자유도  <br>
+        뛰어난 스토리 연출과 3d그래픽<br>
+       완성도 높은 캐릭터  <br>
+        9세대
+
+      </td>
+      <td>
+        <img src="../img/qwer.jfif" style="width: 300px;" alt="..."/>
+      </td>
+      <td style="width: 300px;">
+        기존작에서 볼수없었던 완전히 새로운 시도<br>
+        개선된 연출, 다양한 팬서비스 요소, 스토리 상승<br>
+        포켓몬 행동의 디테일 묘사<br>
+        4세대 (외전)
+      </td>
+    </tr>
+</table>
 </main>

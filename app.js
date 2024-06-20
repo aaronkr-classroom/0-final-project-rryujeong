@@ -68,13 +68,71 @@ app.use(express.json());
 const router = express.Router(); // Express 라우터를 인스턴스화
 app.use("/", router); // 라우터를 애플리케이션에 추가
 
+const methodOverride = require("method-override"); // method-override 미들웨어를 요청
+router.use(
+  methodOverride("_method", {
+    methods: ["POST", "GET"],
+  })
+); // method-override 미들웨어를 사용
+/**
+ * Pages
+ */
+
+
+const passport = require("passport");
+const cookieParser = require("cookie-parser");
+const expressSession = require("express-session");
+const connectFlash = require("connect-flash");
+const expressValidator = require("express-validator");
+const User = require("./models/User");
+
+router.use(cookieParser("secretCuisine123"));
+router.use(expressSession({
+  secret: "secretCuisine123",
+  cookie: {
+    maxAge: 4000000
+  },
+  resave: false,
+  saveUninitialized: false
+}));
+
+router.use(connectFlash());
+router.use(expressValidator());
+router.use(passport.initialize());
+router.use(passport.session());
+passport.use(User.createStrategy());
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
+router.use((req, res, next) => {
+  res.locals.loggedIn = req.isAuthenticated();
+  res.locals.currentUser = req.user;
+  console.log(res.locals.currentUser);
+  next();
+});
+
+
+
+
+router.get("/", pagesController.showHome); // 홈 페이지 위한 라우트 추가
+router.get("/about", pagesController.showAbout); // 코스 페이지 위한 라우트 추가
+router.get("/transportation", pagesController.showTransportation); // 교통수단 페이지 위한 라우트 추가
+router.get("/Ootd", pagesController.showOotd);
+router.get("/Bottom", pagesController.showBottom);
+router.get("/Top", pagesController.showTop);
+router.get("/users/login", usersController.login);
+router.post("/users/login", usersController.authenticate);
+router.get("/users/logout", usersController.logout, usersController.redirectView);
+
 /**
  * Pages
  */
 router.get("/", pagesController.showHome); // 홈 페이지 위한 라우트 추가
 router.get("/about", pagesController.showAbout); // 코스 페이지 위한 라우트 추가
 router.get("/transportation", pagesController.showTransportation); // 교통수단 페이지 위한 라우트 추가
-
+router.get("/Ootd", pagesController.showOotd);
+router.get("/Bottom", pagesController.showBottom);
+router.get("/Top", pagesController.showTop);
 /**
  * Subscribers
  */
@@ -113,16 +171,13 @@ router.get("/users", usersController.index, usersController.indexView); // index
 router.get("/users/new", usersController.new); // 생성 폼을 보기 위한 요청 처리
 router.post(
   "/users/create",
+  usersController.validate,
   usersController.create,
   usersController.redirectView
 ); // 생성 폼에서 받아온 데이터의 처리와 결과를 사용자 보기 페이지에 보여주기
 router.get("/users/:id", usersController.show, usersController.showView);
 router.get("/users/:id/edit", usersController.edit); // viewing을 처리하기 위한 라우트 추가
-router.put(
-  "/users/:id/update",
-  usersController.update,
-  usersController.redirectView
-); // 편집 폼에서 받아온 데이터의 처리와 결과를 사용자 보기 페이지에 보여주기
+router.post("/users/:id/update", usersController.update, usersController.redirectView); // 편집 폼에서 받아온 데이터의 처리와 결과를 사용자 보기 페이지에 보여주기
 router.delete(
   "/users/:id/delete",
   usersController.delete,

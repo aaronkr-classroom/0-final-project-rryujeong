@@ -6,16 +6,27 @@
     <div class="container-left">
       <!-- 로고 -->
       <figure class="logo">
-        <a href="/">
-          🚈
-          <h1 class="site-title">
-            <span class="ut-red">UT</span>-NodeJS 최종 프로젝트
+        <a href="/" style="display: flex;">
+          👔
+          
+          <h1 class="site-title">류정한
           </h1>
         </a>
       </figure>
 
       <!-- 메뉴 -->
       <%- include('_navigation.ejs') %>
+
+      <% if (loggedIn) { %>
+        <a class="btn btn-outline-secondary"
+        href="<%= `/users/${currentUser._id}` %>">
+          <%= currentUser.username %>
+        </a>
+        <a class="btn ut-red" href="/users/logout">Logout</a>
+      <% } else { %>
+        <a class="btn btn-outline-secondary" href ="/users/login">Login</a>
+        <a class="btn ut-red" href="/users/new">회원가입</a>
+      <% } %> 
     </div>
   </div>
 </header>

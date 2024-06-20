@@ -8,7 +8,7 @@ const mongoose = require("mongoose"),
   User = require("../models/User");
 
 // 데이터베이스 연결 설정
-mongoose.connect("mongodb://127.0.0.1:27017/ut-nodejs", {
+mongoose.connect("mongodb://127.0.0.1:27017/pokemon", {
   useNewUrlParser: true,
 });
 
@@ -26,7 +26,7 @@ var users = [
     password: "1234",
     courses: [],
     profileImg:
-      "https://newsimg-hams.hankookilbo.com/2022/01/21/f96adb47-e8b1-43fe-aa16-f2043012cbec.jpg",
+      src="../img/jiwoo.jifi"
   },
   {
     name: {
