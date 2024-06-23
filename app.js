@@ -28,18 +28,19 @@ const pagesController = require("./controllers/pagesController"),
  */
 
 // 애플리케이션에 Mongoose 설정
-const mongoose = require("mongoose"), // mongoose를 요청
-  dbName = "ut-nodejs";
+const mongoose = require("mongoose"); // mongoose를 요청
 
 // 데이터베이스 연결 설정
-mongoose.connect(`mongodb://127.0.0.1:27017/${dbName}`, {
-  useNewUrlParser: true,
-});
-
-// 연결되면 메시지를 보냄
+mongoose.connect(
+  "mongodb+srv://wjdgks815:kAaHXK4G52DSfDIn@ut-node.psdbufj.mongodb.net/?retryWrites=true&w=majority&appName=UT-Node/ut-node",
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  }
+);
 const db = mongoose.connection;
 db.once("open", () => {
-  console.log(`Connected to ${dbName} MongoDB using Mongoose!`);
+  console.log("connected to MongoDB!!");
 });
 
 /**
@@ -100,9 +101,6 @@ router.use(connectFlash());
 router.use(expressValidator());
 router.use(passport.initialize());
 router.use(passport.session());
-passport.use(User.createStrategy());
-passport.serializeUser(User.serializeUser());
-passport.deserializeUser(User.deserializeUser());
 
 router.use((req, res, next) => {
   res.locals.loggedIn = req.isAuthenticated();
